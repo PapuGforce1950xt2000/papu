@@ -1,0 +1,44 @@
+package u1_ed_14_04.serie_fibonacci;
+
+import java.util.Scanner;
+
+public class U1_ED_14_04Serie_Fibonacci {
+    
+    static int primero=0, segundo=1,suma=0, cont=0;
+    
+    public static int Serie(int fin){
+        if(fin == 0){
+         return 0;   
+        }else{
+            fin--;
+            cont++;
+            if(cont >= 2){
+            suma=primero+segundo;
+            primero=segundo;
+            segundo=suma;
+            }
+         return suma+Serie(fin);   
+        }        
+    }
+
+    public static void main(String[] args) {
+        Scanner leer=new Scanner(System.in);
+        int fin, sout;        
+        do{
+            System.out.print("¿Qué posición de la serie Fibonacci desea imprimir? :");
+            fin=leer.nextInt();
+            if(fin<=0){
+                System.err.println("La posición debe ser mayor a CERO");
+            }
+        }while(fin <= 0);
+        sout=Serie(fin);
+        System.out.println("En la posición "+fin+" está el número "+sout);
+        /*
+         if(n==1 || n== 2){
+         return 1;
+          }else{
+          return fibonacci (n-1)+ fibonacci(n-2);
+          }
+         */
+    }
+}
